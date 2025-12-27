@@ -1,11 +1,16 @@
 import type { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { AsteroidCollisionMassFields } from "./components/mass";
 
-import { type AsteroidCollisionTransformedFormRecord } from "@/features/simulator/asteroid-collision/form//model/schemas/asteroid-collision-schema";
+import {
+  asteroidCollisionSchema,
+  type AsteroidCollisionTransformedFormRecord,
+} from "@/features/simulator/asteroid-collision/form//model/schemas/asteroid-collision-schema";
 import { parseAsteroidCollisionForRequest } from "@/features/simulator/asteroid-collision/form//model/utils/parse/asteroid-collision-parse";
 import { type AsteroidCollisionFormRecord } from "@/features/simulator/asteroid-collision/form/model/types/asteroid-collision-types";
+import { asteroidCollisionDefaultValues } from "@/features/simulator/asteroid-collision/form/model/utils/default-values/asteroid-collision-default-values";
 import { Button } from "@/shared/components/ui/button";
 
 type Props = {
@@ -17,13 +22,21 @@ export const AsteroidCollisionForm: FC<Props> = ({ setSubmittedMass }) => {
     AsteroidCollisionFormRecord,
     void,
     AsteroidCollisionTransformedFormRecord
-  >();
+  >({
+    defaultValues: asteroidCollisionDefaultValues,
+    resolver: zodResolver(asteroidCollisionSchema),
+  });
 
-  const { handleSubmit } = form;
+  const { handleSubmit, reset } = form;
 
   const onSubmit = (data: AsteroidCollisionTransformedFormRecord) => {
     const parsedData = parseAsteroidCollisionForRequest(data);
     setSubmittedMass(parsedData);
+  };
+
+  const onReset = () => {
+    reset(asteroidCollisionDefaultValues);
+    setSubmittedMass(asteroidCollisionDefaultValues);
   };
 
   return (
@@ -42,9 +55,15 @@ export const AsteroidCollisionForm: FC<Props> = ({ setSubmittedMass }) => {
 
             <Button
               type="submit"
-              className="w-full px-6 py-3 bg-linear-to-r from-cyan-600 to-blue-600 text-white rounded font-mono tracking-wider hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 border border-cyan-400 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-400/70 uppercase font-bold"
+              className="w-full px-6 py-3 bg-linear-to-r from-cyan-600 to-blue-600 text-white! rounded font-mono tracking-wider hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 border border-cyan-400 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-400/70 uppercase font-bold"
             >
               ► INITIATE SIMULATION
+            </Button>
+            <Button
+              onClick={onReset}
+              className="w-full px-6 py-3 bg-linear-to-r from-red-600 to-red-600 text-white! rounded font-mono tracking-wider hover:from-red-500 hover:to-red-500 transition-all duration-300 border border-red-400 shadow-lg shadow-red-500/50 hover:shadow-red-400/70 uppercase font-bold"
+            >
+              ► RESET SIMULATION
             </Button>
           </form>
         </FormProvider>

@@ -1,10 +1,15 @@
 import type { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import { SupernovaMassField } from "./components/mass";
 
-import type { SupernovaTransformedFormRecord } from "@/features/simulator/supernova/form/model/schemas/supernova-schema";
+import {
+  supernovaSchema,
+  type SupernovaTransformedFormRecord,
+} from "@/features/simulator/supernova/form/model/schemas/supernova-schema";
 import type { SupernovaFormRecord } from "@/features/simulator/supernova/form/model/types/supernova-types";
+import { supernovaDefaultValues } from "@/features/simulator/supernova/form/model/utils/default-values/supernova-default-values";
 import { parseSupernovaForRequest } from "@/features/simulator/supernova/form/model/utils/parse/supernova-parse";
 import { Button } from "@/shared/components/ui/button";
 
@@ -17,7 +22,10 @@ export const SupernovaForm: FC<Props> = ({ setSubmittedMass }) => {
     SupernovaFormRecord,
     void,
     SupernovaTransformedFormRecord
-  >();
+  >({
+    defaultValues: supernovaDefaultValues,
+    resolver: zodResolver(supernovaSchema),
+  });
 
   const { handleSubmit } = form;
 

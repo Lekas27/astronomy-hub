@@ -1,3 +1,3 @@
 export const supernovaDefaultValues = {
-  mass: 1,
+  mass: 0,
 };
