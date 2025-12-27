@@ -1,25 +1,20 @@
 import { Canvas } from "@react-three/fiber";
-import { useCallback, useState } from "react";
 
-import { AsteroidCollisionScene } from "./components/asteroid-collision";
+import { AsteroidCollisionScene } from "./components/asteroid-collision-scene";
 
-import type { AsteroidCollisionTransformedFormRecord } from "@/features/simulator/asteroid-collision/form/model/schemas/asteroid-collision-schema";
 import { AsteroidCollisionForm } from "@/features/simulator/asteroid-collision/form/ui/form";
+import { useAsteroidCollision } from "@/features/simulator/asteroid-collision/viewport/model/hooks/use-asteroid-collision";
 
 export const AsteroidCollisionSimulator = () => {
-  const [submittedMass, setSubmittedMass] = useState({
-    masOfFirstAsteroid: 0,
-    masOfSecondAsteroid: 0,
-  });
-
-  const { masOfFirstAsteroid, masOfSecondAsteroid } = submittedMass;
-
-  const handleSubmitMass = useCallback(
-    (data: AsteroidCollisionTransformedFormRecord) => {
-      setSubmittedMass(data);
-    },
-    [setSubmittedMass]
-  );
+  const {
+    handleSubmitMass,
+    isMoving,
+    masOfFirstAsteroid,
+    masOfSecondAsteroid,
+    handleCanvasClick,
+    showExplosion,
+    handleCollision,
+  } = useAsteroidCollision();
 
   return (
     <div className="mt-16 bg-black p-8">
@@ -43,17 +38,26 @@ export const AsteroidCollisionSimulator = () => {
             <div className="bg-gray-950 border-2 border-cyan-500 rounded-lg overflow-hidden shadow-2xl shadow-cyan-500/20 h-full min-h-[600px]">
               <div className="border-b border-cyan-500/50 p-4 bg-gray-900/50">
                 <h2 className="text-cyan-400 font-mono text-sm tracking-wide flex items-center gap-2">
-                  <span className="w-2 h-2 bg-green-400 rounded-full"></span>
+                  <span
+                    className={`w-2 h-2 rounded-full ${
+                      isMoving ? "bg-red-400" : "bg-green-400"
+                    }`}
+                  ></span>
                   ASTEROID VISUALIZATION VIEWPORT
                   {(masOfFirstAsteroid !== 0 || masOfSecondAsteroid !== 0) && (
-                    <span className="ml-auto text-xs">STATUS: ACTIVE</span>
+                    <span className="ml-auto text-xs">
+                      {isMoving
+                        ? "STATUS: COLLISION IN PROGRESS"
+                        : "STATUS: CLICK TO START"}
+                    </span>
                   )}
                 </h2>
               </div>
 
               <div
-                className="relative h-full flex items-center justify-center p-8"
+                className="relative h-full flex items-center justify-center p-8 cursor-pointer"
                 style={{ minHeight: "550px" }}
+                onClick={handleCanvasClick}
               >
                 {masOfFirstAsteroid !== 0 || masOfSecondAsteroid !== 0 ? (
                   <div className="relative flex items-center justify-center z-10 w-full h-full">
@@ -68,6 +72,9 @@ export const AsteroidCollisionSimulator = () => {
                         <AsteroidCollisionScene
                           massOfFirstAsteroid={masOfFirstAsteroid}
                           massOfSecondAsteroid={masOfSecondAsteroid}
+                          isMoving={isMoving}
+                          showExplosion={showExplosion}
+                          onCollision={handleCollision}
                         />
                       </Canvas>
                     </div>
