@@ -24,7 +24,7 @@ type Props = {
   isMoving?: boolean;
   targetPosition?: [number, number, number];
   onCollision?: () => void;
-  otherRadius?: number; // Novi prop za radius drugog asteroida
+  otherRadius?: number;
 };
 
 export const AsteroidMesh: FC<Props> = ({
