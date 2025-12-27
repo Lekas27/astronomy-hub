@@ -1,32 +1,21 @@
 import { Canvas } from "@react-three/fiber";
-import { Suspense, useState } from "react";
+import { Suspense } from "react";
 
 import { StarExplosion } from "./components/explosion";
 import { StarRemnant } from "./components/remnant";
 import { StarMesh } from "./components/star";
 
-import type { SupernovaTransformedFormRecord } from "@/features/simulator/supernova/form/model/schemas/supernova-schema";
 import { SupernovaForm } from "@/features/simulator/supernova/form/ui/form";
-
-type SimulationPhase = "star" | "explosion" | "remnant";
+import { useSupernova } from "../model/hooks/use-supernova";
 
 export const SupernovaSimulator = () => {
-  const [submittedMass, setSubmittedMass] = useState<number | null>(null);
-  const [phase, setPhase] = useState<SimulationPhase>("star");
-
-  const handleStarClick = () => {
-    setPhase("explosion");
-  };
-
-  const handleExplosionComplete = () => {
-    setPhase("remnant");
-  };
-
-  const handleNewSimulation = (data: SupernovaTransformedFormRecord) => {
-    const { mass } = data;
-
-    setSubmittedMass(mass);
-  };
+  const {
+    handleNewSimulation,
+    handleExplosionComplete,
+    handleStarClick,
+    submittedMass,
+    phase,
+  } = useSupernova();
 
   return (
     <div className="mt-16 bg-black p-8">
