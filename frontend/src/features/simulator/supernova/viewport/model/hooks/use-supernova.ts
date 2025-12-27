@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import type { SupernovaTransformedFormRecord } from "@/features/simulator/supernova/form/model/schemas/supernova-schema";
 
 type SimulationPhase = "star" | "explosion" | "remnant";

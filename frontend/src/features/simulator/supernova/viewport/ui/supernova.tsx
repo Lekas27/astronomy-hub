@@ -6,7 +6,7 @@ import { StarRemnant } from "./components/remnant";
 import { StarMesh } from "./components/star";
 
 import { SupernovaForm } from "@/features/simulator/supernova/form/ui/form";
-import { useSupernova } from "../model/hooks/use-supernova";
+import { useSupernova } from "@/features/simulator/supernova/viewport/model/hooks/use-supernova";
 
 export const SupernovaSimulator = () => {
   const {
