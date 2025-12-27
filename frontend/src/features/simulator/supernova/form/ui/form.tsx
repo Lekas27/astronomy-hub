@@ -1,6 +1,6 @@
+import { zodResolver } from "@hookform/resolvers/zod";
 import type { FC } from "react";
 import { FormProvider, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 
 import { SupernovaMassField } from "./components/mass";
 
