@@ -30,7 +30,7 @@ export const AsteroidCollisionScene: FC<Props> = ({
         mass={massOfFirstAsteroid || 100}
         color="#8B7355"
         isMoving={isMoving}
-        targetPosition={[0, 0, 0]}
+        targetPosition={[10, 0, 0]}
         onCollision={onCollision}
         otherRadius={radius2}
       />
@@ -40,7 +40,7 @@ export const AsteroidCollisionScene: FC<Props> = ({
         mass={massOfSecondAsteroid || 100}
         color="#A0826D"
         isMoving={isMoving}
-        targetPosition={[0, 0, 0]}
+        targetPosition={[-10, 0, 0]}
         onCollision={onCollision}
         otherRadius={radius1}
       />
