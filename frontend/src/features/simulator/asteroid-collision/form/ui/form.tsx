@@ -1,16 +1,10 @@
-import { zodResolver } from "@hookform/resolvers/zod";
 import type { FC } from "react";
-import { FormProvider, useForm } from "react-hook-form";
+import { FormProvider } from "react-hook-form";
 
 import { AsteroidCollisionMassFields } from "./components/mass";
 
-import {
-  asteroidCollisionSchema,
-  type AsteroidCollisionTransformedFormRecord,
-} from "@/features/simulator/asteroid-collision/form//model/schemas/asteroid-collision-schema";
-import { parseAsteroidCollisionForRequest } from "@/features/simulator/asteroid-collision/form//model/utils/parse/asteroid-collision-parse";
-import { type AsteroidCollisionFormRecord } from "@/features/simulator/asteroid-collision/form/model/types/asteroid-collision-types";
-import { asteroidCollisionDefaultValues } from "@/features/simulator/asteroid-collision/form/model/utils/default-values/asteroid-collision-default-values";
+import { useAsteroidCollisionForm } from "@/features/simulator/asteroid-collision/form/model/hooks/use-asteroid-collision-form";
+import { type AsteroidCollisionTransformedFormRecord } from "@/features/simulator/asteroid-collision/form/model/schemas/asteroid-collision-schema";
 import { Button } from "@/shared/components/ui/button";
 
 type Props = {
@@ -18,26 +12,9 @@ type Props = {
 };
 
 export const AsteroidCollisionForm: FC<Props> = ({ setSubmittedMass }) => {
-  const form = useForm<
-    AsteroidCollisionFormRecord,
-    void,
-    AsteroidCollisionTransformedFormRecord
-  >({
-    defaultValues: asteroidCollisionDefaultValues,
-    resolver: zodResolver(asteroidCollisionSchema),
+  const { form, handleSubmit, onSubmit, onReset } = useAsteroidCollisionForm({
+    setSubmittedMass,
   });
-
-  const { handleSubmit, reset } = form;
-
-  const onSubmit = (data: AsteroidCollisionTransformedFormRecord) => {
-    const parsedData = parseAsteroidCollisionForRequest(data);
-    setSubmittedMass(parsedData);
-  };
-
-  const onReset = () => {
-    reset(asteroidCollisionDefaultValues);
-    setSubmittedMass(asteroidCollisionDefaultValues);
-  };
 
   return (
     <div className="w-1/3">
