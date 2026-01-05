@@ -27,11 +27,16 @@ export const SupernovaForm: FC<Props> = ({ setSubmittedMass }) => {
     resolver: zodResolver(supernovaSchema),
   });
 
-  const { handleSubmit } = form;
+  const { handleSubmit, reset } = form;
 
   const onSubmit = (data: SupernovaTransformedFormRecord) => {
     const parsedData = parseSupernovaForRequest(data);
     setSubmittedMass(parsedData);
+  };
+
+  const onReset = () => {
+    reset(supernovaDefaultValues);
+    setSubmittedMass(supernovaDefaultValues);
   };
 
   return (
@@ -53,6 +58,12 @@ export const SupernovaForm: FC<Props> = ({ setSubmittedMass }) => {
               className="w-full px-6 py-3 bg-linear-to-r from-cyan-600 to-blue-600 text-white rounded font-mono tracking-wider hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 border border-cyan-400 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-400/70 uppercase font-bold"
             >
               ► INITIATE SIMULATION
+            </Button>
+            <Button
+              onClick={onReset}
+              className="w-full px-6 py-3 bg-linear-to-r from-red-600 to-red-600 text-white! rounded font-mono tracking-wider hover:from-red-500 hover:to-red-500 transition-all duration-300 border border-red-400 shadow-lg shadow-red-500/50 hover:shadow-red-400/70 uppercase font-bold"
+            >
+              ► RESET SIMULATION
             </Button>
           </form>
         </FormProvider>
