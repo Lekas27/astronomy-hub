@@ -32,7 +32,7 @@ export const SupernovaForm: FC<Props> = ({ setSubmittedMass }) => {
 
             <Button
               type="submit"
-              className="w-full px-6 py-3 bg-linear-to-r from-cyan-600 to-blue-600 text-white rounded font-mono tracking-wider hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 border border-cyan-400 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-400/70 uppercase font-bold"
+              className="w-full px-6 py-3 bg-linear-to-r from-cyan-600 to-blue-600 text-white! rounded font-mono tracking-wider hover:from-cyan-500 hover:to-blue-500 transition-all duration-300 border border-cyan-400 shadow-lg shadow-cyan-500/50 hover:shadow-cyan-400/70 uppercase font-bold"
             >
               ► INITIATE SIMULATION
             </Button>
