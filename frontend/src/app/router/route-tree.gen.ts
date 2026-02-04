@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as _publicIndexRouteImport } from './routes/__public/index'
 import { Route as _publicSimulatorRouteImport } from './routes/__public/simulator'
 import { Route as _publicRegisterRouteImport } from './routes/__public/register'
+import { Route as _publicNewsRouteImport } from './routes/__public/news'
 import { Route as _publicLoginRouteImport } from './routes/__public/login'
 import { Route as _publicContactUsRouteImport } from './routes/__public/contact-us'
 import { Route as _publicAboutUsRouteImport } from './routes/__public/about-us'
@@ -31,6 +32,11 @@ const _publicSimulatorRoute = _publicSimulatorRouteImport.update({
 const _publicRegisterRoute = _publicRegisterRouteImport.update({
   id: '/__public/register',
   path: '/register',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const _publicNewsRoute = _publicNewsRouteImport.update({
+  id: '/__public/news',
+  path: '/news',
   getParentRoute: () => rootRouteImport,
 } as any)
 const _publicLoginRoute = _publicLoginRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/about-us': typeof _publicAboutUsRoute
   '/contact-us': typeof _publicContactUsRoute
   '/login': typeof _publicLoginRoute
+  '/news': typeof _publicNewsRoute
   '/register': typeof _publicRegisterRoute
   '/simulator': typeof _publicSimulatorRoute
   '/': typeof _publicIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/about-us': typeof _publicAboutUsRoute
   '/contact-us': typeof _publicContactUsRoute
   '/login': typeof _publicLoginRoute
+  '/news': typeof _publicNewsRoute
   '/register': typeof _publicRegisterRoute
   '/simulator': typeof _publicSimulatorRoute
   '/': typeof _publicIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/__public/about-us': typeof _publicAboutUsRoute
   '/__public/contact-us': typeof _publicContactUsRoute
   '/__public/login': typeof _publicLoginRoute
+  '/__public/news': typeof _publicNewsRoute
   '/__public/register': typeof _publicRegisterRoute
   '/__public/simulator': typeof _publicSimulatorRoute
   '/__public/': typeof _publicIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/contact-us'
     | '/login'
+    | '/news'
     | '/register'
     | '/simulator'
     | '/'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/about-us'
     | '/contact-us'
     | '/login'
+    | '/news'
     | '/register'
     | '/simulator'
     | '/'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/__public/about-us'
     | '/__public/contact-us'
     | '/__public/login'
+    | '/__public/news'
     | '/__public/register'
     | '/__public/simulator'
     | '/__public/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   _publicAboutUsRoute: typeof _publicAboutUsRoute
   _publicContactUsRoute: typeof _publicContactUsRoute
   _publicLoginRoute: typeof _publicLoginRoute
+  _publicNewsRoute: typeof _publicNewsRoute
   _publicRegisterRoute: typeof _publicRegisterRoute
   _publicSimulatorRoute: typeof _publicSimulatorRoute
   _publicIndexRoute: typeof _publicIndexRoute
@@ -155,6 +168,13 @@ declare module '@tanstack/react-router' {
       path: '/register'
       fullPath: '/register'
       preLoaderRoute: typeof _publicRegisterRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/__public/news': {
+      id: '/__public/news'
+      path: '/news'
+      fullPath: '/news'
+      preLoaderRoute: typeof _publicNewsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/__public/login': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   _publicAboutUsRoute: _publicAboutUsRoute,
   _publicContactUsRoute: _publicContactUsRoute,
   _publicLoginRoute: _publicLoginRoute,
+  _publicNewsRoute: _publicNewsRoute,
   _publicRegisterRoute: _publicRegisterRoute,
   _publicSimulatorRoute: _publicSimulatorRoute,
   _publicIndexRoute: _publicIndexRoute,

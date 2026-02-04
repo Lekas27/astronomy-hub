@@ -3,7 +3,7 @@ import type { MilestoneType } from "@/pages/about-us/model/types/milestone";
 export const milestones: MilestoneType[] = [
   {
     year: "2020",
-    title: "Astronomy Hub Launched",
+    title: "Astronomy Panel Launched",
     description:
       "Started with a simple vision: make astronomy accessible to everyone.",
   },

@@ -6,7 +6,7 @@ export const contactInfo: ContactInfoType[] = [
   {
     icon: Mail,
     title: "Email Us",
-    detail: "support@astronomyhub.com",
+    detail: "support@astronomypabel.com",
     description: "We'll respond within 24 hours",
   },
   {

@@ -19,6 +19,6 @@ export const values: ValueType[] = [
     icon: Zap,
     title: "Our Values",
     description:
-      "Innovation, accessibility, collaboration, and scientific accuracy drive everything we do at Astronomy Hub.",
+      "Innovation, accessibility, collaboration, and scientific accuracy drive everything we do at Astronomy Panel.",
   },
 ];

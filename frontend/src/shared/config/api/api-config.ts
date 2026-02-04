@@ -13,3 +13,10 @@ export const API_CONFIG: ApiConfig = {
   xsrfHeaderName: "X-CSRFToken",
   withCredentials: false,
 };
+
+export const NASA_API_CONFIG: ApiConfig = {
+  baseURL: ENV_CONFIG.PUBLIC_API_URL,
+  xsrfCookieName: "csrftoken",
+  xsrfHeaderName: "X-CSRFToken",
+  withCredentials: false,
+};

@@ -5,6 +5,7 @@ import {
   Sparkles,
   Rocket,
   MessagesSquare,
+  Newspaper,
 } from "lucide-react";
 import { useState, type FC, type ReactNode } from "react";
 
@@ -30,7 +31,7 @@ export const Navbar: FC<Props> = ({ element }) => {
                 <Sparkles className="h-4 w-4 text-purple-300 absolute -top-1 -right-1 animate-pulse" />
               </div>
               <span className="text-2xl font-bold bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                AstronomyHub
+                AstronomyPanel
               </span>
             </div>
 
@@ -48,6 +49,12 @@ export const Navbar: FC<Props> = ({ element }) => {
                 icon={<MessagesSquare className="h-4 w-4 text-blue-300" />}
               >
                 Discussions
+              </NavLink>
+              <NavLink
+                to="/news"
+                icon={<Newspaper className="h-4 w-4 text-purple-300" />}
+              >
+                News
               </NavLink>
               <NavLink to="/about-us">About</NavLink>
               <NavLink to="/contact-us">Contact</NavLink>

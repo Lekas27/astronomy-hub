@@ -39,7 +39,7 @@ export const HeroSection = () => (
           <div className="flex items-center gap-3 bg-purple-500/20 backdrop-blur-sm px-6 py-3 rounded-full border border-purple-400/30">
             <Sparkles className="h-5 w-5 text-purple-300 animate-pulse" />
             <span className="text-purple-200 font-semibold">
-              About Astronomy Hub
+              About Astronomy Panel
             </span>
           </div>
         </div>

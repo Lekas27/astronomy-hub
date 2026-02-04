@@ -68,7 +68,7 @@ export const HeroSection = () => (
 
         {/* Main Heading */}
         <Title className="text-6xl md:text-8xl font-bold text-white mb-6 leading-tight animate-fade-in">
-          Astronomy Hub
+          Astronomy Panel
           <span className="block bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent mt-2 animate-slide-up">
             Simulate • Discuss • Discover
           </span>

@@ -32,7 +32,7 @@ export const ContactFormSection = () => {
         "Sign up for a free account, navigate to the Simulator page, and click 'Create New Simulation'. Our intuitive interface will guide you through the process.",
     },
     {
-      question: "Is Astronomy Hub free to use?",
+      question: "Is Astronomy Panel free to use?",
       answer:
         "Yes! We offer a free tier with access to basic simulations and discussions. Premium features are available for advanced users.",
     },
