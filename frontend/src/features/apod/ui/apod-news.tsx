@@ -47,7 +47,7 @@ export const ApodNews = () => {
   } = apodData;
 
   return (
-    <div className="min-h-screen bg-slate-950 mt-4">
+    <div className="min-h-screen bg-slate-950">
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(50)].map((_, i) => (
