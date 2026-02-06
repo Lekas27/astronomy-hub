@@ -1,4 +1,4 @@
-import { Sparkles, Telescope, Rocket } from "lucide-react";
+import { Sparkles, SpaceIcon } from "lucide-react";
 import { type FC } from "react";
 
 import type { NewsSection } from "@/widgets/news-navbar/model/types/news-navbar";
@@ -30,7 +30,7 @@ export const NewsNavbar: FC<Props> = ({ active, onChange }) => {
         APOD
       </button>
 
-      <button
+      {/* <button
         onClick={() => onChange("astronomy")}
         className={`${baseClasses} ${
           active === "astronomy" ? activeClasses : inactiveClasses
@@ -48,6 +48,17 @@ export const NewsNavbar: FC<Props> = ({ active, onChange }) => {
       >
         <Rocket className="h-4 w-4" />
         Spaceflight
+      </button> */}
+
+      {/* New NeoWs button */}
+      <button
+        onClick={() => onChange("neows")}
+        className={`${baseClasses} ${
+          active === "neows" ? activeClasses : inactiveClasses
+        }`}
+      >
+        <SpaceIcon className="h-4 w-4" />
+        NeoWs
       </button>
     </div>
   );

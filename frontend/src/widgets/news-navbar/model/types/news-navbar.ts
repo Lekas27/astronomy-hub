@@ -1,1 +1,1 @@
-export type NewsSection = "apod" | "astronomy" | "spaceflight";
+export type NewsSection = "apod" | "neows";

@@ -15,7 +15,7 @@ class NewsApodService implements NewsApodServiceType {
   async getApod() // params?: GetNewsApodRequestRecord,
   : Promise<GetApodResponseRecord> {
     return await callNasaApi<GetApodResponseRecord>({
-      url: `apod?api_key=${ApiKey}`,
+      url: `planetary/apod?api_key=${ApiKey}`,
       method: "GET",
       //   params, // directly pass the payload as query params
     });

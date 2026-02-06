@@ -5,4 +5,5 @@
  */
 export enum ReactQueryKeys {
   APOD = "apod",
+  NEO_WS_FEED = "neoWsFeed",
 }
