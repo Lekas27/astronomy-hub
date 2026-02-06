@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import {
   Menu,
   X,
@@ -30,14 +31,15 @@ export const Navbar: FC<Props> = ({ element }) => {
                 <Telescope className="h-10 w-10 text-purple-400 group-hover:text-purple-300 transition-all duration-300 group-hover:scale-110" />
                 <Sparkles className="h-4 w-4 text-purple-300 absolute -top-1 -right-1 animate-pulse" />
               </div>
-              <span className="text-2xl font-bold bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
-                AstronomyPanel
-              </span>
+              <Link to="/">
+                <span className="text-2xl font-bold bg-linear-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                  AstronomyPanel
+                </span>
+              </Link>
             </div>
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-1">
-              <NavLink to="/">Home</NavLink>
               <NavLink
                 to="/simulator"
                 icon={<Rocket className="h-4 w-4 text-purple-300" />}
