@@ -114,7 +114,7 @@ export const ApodNews = () => {
                 href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center justify-center gap-3 py-32 bg-gradient-to-br from-purple-600/20 to-blue-600/20 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300"
+                className="group flex items-center justify-center gap-3 py-32 bg-linear-to-br from-purple-600/20 to-blue-600/20 hover:from-purple-600/30 hover:to-blue-600/30 transition-all duration-300"
               >
                 <ExternalLink className="h-8 w-8 text-purple-400 group-hover:scale-110 transition-transform" />
                 <span className="text-xl font-semibold text-white">
