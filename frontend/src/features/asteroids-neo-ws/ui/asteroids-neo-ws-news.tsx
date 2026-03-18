@@ -1,8 +1,7 @@
 import { Calendar, ExternalLink, AlertCircle, SpaceIcon } from "lucide-react";
 import type { FC } from "react";
 
-import { useGetNeoWsFeed } from "@/entities/news/asteroids-neo-ws/model/queries/asteroids-neo-ws";
-import type { GetAsteroidNeoWsRequestRecord } from "@/entities/news/asteroids-neo-ws/model/types";
+import { useAsteroidNeoWs } from "@/features/asteroids-neo-ws/model/hooks/use-asteroid-neo-ws";
 import { Paragraph } from "@/shared/components/ui/typography/paragraph";
 import { Title } from "@/shared/components/ui/typography/title";
 
@@ -12,11 +11,10 @@ type Props = {
 };
 
 export const NeoWsNews: FC<Props> = ({ startDate, endDate }) => {
-  const params: GetAsteroidNeoWsRequestRecord = {
-    start_date: startDate,
-    end_date: endDate,
-  };
-  const { data: neoData, isFetching, error } = useGetNeoWsFeed(params);
+  const { neoData, error, isFetching } = useAsteroidNeoWs({
+    startDate,
+    endDate,
+  });
 
   if (isFetching)
     return (
